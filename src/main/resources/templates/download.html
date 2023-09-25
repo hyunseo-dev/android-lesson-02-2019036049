@@ -10,7 +10,23 @@
     </body>
     <head>
         <script type="application/javascript">
-            // 이곳에 코드를 작성하십시오.
+            const response = await fetch('/api/v1/rest/aws/list');
+            const fileList = await response.json();
+
+            // 파일 목록을 순회하며 각 파일에 대한 다운로드 링크 생성
+            const fileListContainer = document.getElementById('file_list');
+            fileList.forEach((file) => {
+                const li = document.createElement('li');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = `/download/${encodeURIComponent(file)}`; // 파일 다운로드 링크
+                downloadLink.textContent = file; // 파일 이름 표시
+                li.appendChild(downloadLink);
+                fileListContainer.appendChild(li);
+            });
+            } catch (error) {
+                console.error('파일 목록을 불러오는 중 오류 발생:', error);
+            }
+            })();
         </script>
     </head>
 </html>

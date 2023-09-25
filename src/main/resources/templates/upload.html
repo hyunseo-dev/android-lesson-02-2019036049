@@ -7,6 +7,16 @@
         <span id="message"> </span>
     </body>
     <script>
+        (async () => {
+            const response = await fetch('/api/v1/rest/aws/list');
+            const result = await response.json();
+            console.log(result);
+            for (let i = 0; i < result.length; i++) {
+                let li = document.createElement("li");
+                li.appendChild(document.createTextNode(result[i]));
+                document.getElementById("fileList").appendChild(li);
+            }
+        })()
 
         let params = new URLSearchParams(window.location.search);
         if (params.get("success") != null) {
