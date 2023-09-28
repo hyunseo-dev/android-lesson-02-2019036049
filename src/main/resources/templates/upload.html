@@ -1,9 +1,15 @@
 <html lang="ko">
     <body>
         <a href="/download"> <--  다운로드 페이지로 </a>
-        <h2> 파일 업로드 </h2>
-        <span>파일 업로드 코드를 작성하십시오.</span>
-        <span>파일을 업로드하는 예제에 대해서는 <a href="https://github.com/java-lesson-cbnu/android-lesson-01">이전 예제 레포지토리</a>를 참고하세요. </span>
+        <h2> AWS API에 연결되었습니다! </h2>
+        AWS API에 성공적으로 연결되었습니다. 현재 파악된 파일 목록은 다음과 같습니다 : <br/>
+        <ul id="fileList">
+
+        </ul>
+        <form  method="post"action="api/v1/rest/aws/upload" enctype="multipart/form-data">
+            <input name = "file" type="file" value="파일 선택"/><br/>
+            <input type="submit" value="업로드"/><br/>
+        </form>
         <span id="message"> </span>
     </body>
     <script>
